@@ -19,25 +19,27 @@ public final class R {
         public static final int pink_round=0x7f020005;
     }
     public static final class id {
-        public static final int btnChoosePhoto=0x7f060005;
-        public static final int btnTakePhoto=0x7f060004;
-        public static final int header=0x7f060001;
-        public static final int menu=0x7f060003;
-        public static final int photo_banner=0x7f060000;
-        public static final int subtitle=0x7f060002;
+        public static final int btnAcceptPhoto=0x7f060004;
+        public static final int btnChoosePhoto=0x7f060006;
+        public static final int btnTakePhoto=0x7f060005;
+        public static final int header=0x7f060000;
+        public static final int menu=0x7f060002;
+        public static final int photo_banner=0x7f060003;
+        public static final int subtitle=0x7f060001;
     }
     public static final class layout {
-        public static final int photo_banner=0x7f030000;
-        public static final int title=0x7f030001;
+        public static final int title=0x7f030000;
+        public static final int ui_choose_banner=0x7f030001;
         public static final int ui_main=0x7f030002;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
         public static final int app_subtitle=0x7f040002;
         public static final int app_title=0x7f040001;
+        public static final int btnAcceptPhoto=0x7f040005;
         public static final int btnChoosePhoto=0x7f040004;
         public static final int btnTakePhoto=0x7f040003;
-        public static final int result_description=0x7f040005;
+        public static final int result_description=0x7f040006;
     }
     public static final class style {
         public static final int WindowTitleBackground=0x7f050001;

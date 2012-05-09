@@ -31,6 +31,7 @@ public class OnClickCapturePhotoButton implements OnClickListener {
 			Uri fileUri = Uri.fromFile(storageManager.getOutputMediaFile(MediaType.Image));
 			Log.d("Storage Dir", fileUri.getPath());
 			intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+			source.getIntent().putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
 
 		} catch (NoMediaMountedException e) {
 			Log.d("Media storage not mounted", "Could not save photo in a external media storage. No media storage was found.");

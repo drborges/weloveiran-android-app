@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#E5EDE4" >
+
+    <RelativeLayout
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@drawable/img_menu" >
+
+        <ImageView
+            android:id="@+id/photo_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/result_description" />
+
+        <Button
+            android:id="@+id/btnAcceptPhoto"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/photo_banner"
+            android:layout_margin="2dip"
+            android:background="@drawable/btn_custom"
+            android:height="50dip"
+            android:text="@string/btnAcceptPhoto"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+
+</RelativeLayout>

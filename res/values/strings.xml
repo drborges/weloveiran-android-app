@@ -5,5 +5,6 @@
     <string name="app_subtitle">we will never bomb your country</string>
     <string name="btnTakePhoto">Take a new photo</string>
     <string name="btnChoosePhoto">Choose an existing photo</string>
+    <string name="btnAcceptPhoto">Upload to Code Pink</string>
     <string name="result_description">Holds the image with the banner plotted</string>
 </resources>
