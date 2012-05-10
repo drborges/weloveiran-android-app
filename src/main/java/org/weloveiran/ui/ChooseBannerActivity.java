@@ -68,6 +68,7 @@ public class ChooseBannerActivity extends Activity {
 	
 	private void uploadPicture(Bitmap photo) {
 		ProgressDialog progress = ProgressDialog.show(ChooseBannerActivity.this, "Uploading", "Please wait...", true);
+		progress.setCancelable(true);
 		AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
 		alertBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 	           public void onClick(DialogInterface dialog, int id) {

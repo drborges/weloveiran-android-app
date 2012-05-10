@@ -4,12 +4,14 @@ import java.io.ByteArrayOutputStream;
 import java.net.HttpURLConnection;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.ByteArrayBody;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 
@@ -32,14 +34,19 @@ public class UploadPicture extends AsyncTask<Object, Void, Integer> {
 			alertBuilder = (AlertDialog.Builder) params[1];
 			Bitmap photo = (Bitmap) params[2];
 
-			HttpClient httpClient = new DefaultHttpClient();
+			HttpParams httpParameters = new BasicHttpParams();
+			HttpConnectionParams.setConnectionTimeout(httpParameters, 5000);
+			HttpConnectionParams.setSoTimeout(httpParameters, 60000);
+
+			DefaultHttpClient httpClient = new DefaultHttpClient(httpParameters);
+
 			HttpContext localContext = new BasicHttpContext();
-			HttpPost httpPost = new HttpPost("http://dev.weloveiran.org/upload");
+			HttpPost httpPost = new HttpPost("http://weloveiran.org/upload_from_mobile");
 
 			MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
 
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			photo.compress(CompressFormat.JPEG, 100, bos);
+			photo.compress(CompressFormat.JPEG, 70, bos);
 			byte[] data = bos.toByteArray();
 
 			entity.addPart("photo", new ByteArrayBody(data, "weloveiran.jpg"));
