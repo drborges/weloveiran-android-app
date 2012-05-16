@@ -7,9 +7,12 @@ import org.weloveiran.managers.StorageManager;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -22,7 +25,7 @@ public class OnClickCapturePhotoButton implements OnClickListener {
 	public OnClickCapturePhotoButton(Activity source, int capturePhotoRequestCode) {
 		this.source = source;
 		this.capturePhotoRequestCode = capturePhotoRequestCode;
-		this.storageManager = new StorageManager(); // could be injected for test purposes
+		this.storageManager = new StorageManager();
 	}
 	
 	public void onClick(View v) {
@@ -32,7 +35,7 @@ public class OnClickCapturePhotoButton implements OnClickListener {
 			Log.d("Storage Dir", fileUri.getPath());
 			intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
 			source.getIntent().putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-
+			
 		} catch (NoMediaMountedException e) {
 			Log.d("Media storage not mounted", "Could not save photo in a external media storage. No media storage was found.");
 		} catch (MediaStorageException e) {

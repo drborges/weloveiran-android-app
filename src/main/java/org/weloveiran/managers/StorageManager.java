@@ -23,7 +23,7 @@ public class StorageManager {
 
 	public File createFile(MediaType mediaType) throws MediaStorageException {
 		File mediaStorageDir = getAppStorageDir();
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());		
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 		File mediaFile = new File(mediaStorageDir.getPath() + File.separator + mediaType.getPrefix() + timeStamp + mediaType.getFileExtension());
 
 		return mediaFile;
