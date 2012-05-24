@@ -21,6 +21,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -32,11 +33,18 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class ChooseBannerActivity extends Activity {
+import com.blahti.example.drag.DragController;
+import com.blahti.example.drag.DragLayer;
+
+public class ChooseBannerActivity extends Activity implements View.OnTouchListener {
+
+	private DragController mDragController;
+	private DragLayer mDragLayer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		mDragController = new DragController(this);
 
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.ui_choose_banner);
@@ -44,39 +52,72 @@ public class ChooseBannerActivity extends Activity {
 
 		prepareBannerSelectionGallery();
 		
-		Uri photoUri = (Uri) getIntent().getExtras().get(MediaStore.EXTRA_OUTPUT);
-		final Bitmap photoFinal = ploteBanner(photoUri);
+		Uri photoUri = (Uri) getIntent().getExtras().get(
+				MediaStore.EXTRA_OUTPUT);
+		showPicture(ploteBanner(photoUri));
 
 		Button btnAcceptPhoto = (Button) findViewById(R.id.btnAcceptPhoto);
 		btnAcceptPhoto.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				uploadPicture(photoFinal);
+				Uri photoUri = (Uri) getIntent().getExtras().get(
+						MediaStore.EXTRA_OUTPUT);
+				//uploadPicture(ploteBanner(photoUri));
+				showPicture(ploteBanner(photoUri));
 			}
 		});
 
-		showPicture(photoFinal);
+		setupViews();
 	}
-	
+
+	public boolean onTouch(View v, MotionEvent ev) {
+		boolean handledHere = false;
+		final int action = ev.getAction();
+		if (action == MotionEvent.ACTION_DOWN) {
+			handledHere = startDrag(v);
+		}
+		return handledHere;
+	}
+
+	public boolean startDrag(View v) {
+		Object dragInfo = v;
+		mDragController.startDrag(v, mDragLayer, dragInfo,
+				DragController.DRAG_ACTION_MOVE);
+		return true;
+	}
+
+	private void setupViews() {
+		DragController dragController = mDragController;
+		mDragLayer = (DragLayer) findViewById(R.id.drag_layer);
+		mDragLayer.setDragController(dragController);
+		dragController.addDropTarget(mDragLayer);
+		ImageView banner = (ImageView) findViewById(R.id.banner);
+		banner.setOnTouchListener(this);
+	}
+
 	@Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
-        Toast.makeText(this, "Longpress: " + info.position, Toast.LENGTH_SHORT).show();
-        return true;
-    }
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+				.getMenuInfo();
+		Toast.makeText(this, "Longpress: " + info.position, Toast.LENGTH_SHORT)
+				.show();
+		return true;
+	}
 
 	private void prepareBannerSelectionGallery() {
 		Gallery g = (Gallery) findViewById(R.id.banners_gallery);
-        // Set the adapter to our custom adapter (below)
-        g.setAdapter(new ImageAdapter(this));
-        
-        // Set a item click listener, and just Toast the clicked position
-        g.setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Toast.makeText(ChooseBannerActivity.this, "" + position, Toast.LENGTH_SHORT).show();
-            }
-        });
+		// Set the adapter to our custom adapter (below)
+		g.setAdapter(new ImageAdapter(this));
+
+		// Set a item click listener, and just Toast the clicked position
+		g.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView parent, View v, int position,
+					long id) {
+				Toast.makeText(ChooseBannerActivity.this, "" + position,
+						Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
 	private Bitmap ploteBanner(Uri photoUri) {
@@ -84,10 +125,19 @@ public class ChooseBannerActivity extends Activity {
 			ContentResolver cr = getContentResolver();
 			InputStream in = cr.openInputStream(photoUri);
 
-			Bitmap photo = ImageHelper.resolvePhotoOrientation(this, photoUri, BitmapFactory.decodeStream(in)).copy(Bitmap.Config.RGB_565, true);
-			Bitmap banner = BitmapFactory.decodeResource(getResources(), R.drawable.pink_round).copy(Bitmap.Config.RGB_565, true);
+			/*
+			Bitmap photo = ImageHelper.resolvePhotoOrientation(this, photoUri,
+					BitmapFactory.decodeStream(in)).copy(Bitmap.Config.RGB_565,
+					true);*/
+			Bitmap photo = 
+					BitmapFactory.decodeStream(in).copy(Bitmap.Config.RGB_565,
+							true);
+			Bitmap banner = BitmapFactory.decodeResource(getResources(),
+					R.drawable.pink_round).copy(Bitmap.Config.ARGB_8888, true);
 
-			return new BannerPlotter(photo).plote(banner).at(200, 30);
+			ImageView bannerImg = (ImageView) findViewById(R.id.banner);
+			
+			return new BannerPlotter(photo).plote(banner).at(bannerImg.getLeft(), bannerImg.getTop());
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

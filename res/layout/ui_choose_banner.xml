@@ -10,13 +10,30 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="0dip"
 	    android:layout_weight="1"
+	    android:gravity="center"
         android:background="@drawable/img_menu" >
+        
+        <com.blahti.example.drag.DragLayer
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drag_layer"
+        android:layout_width="400dip"
+        android:layout_height="400dip" >
 
         <ImageView
             android:id="@+id/photo_banner"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="400dip"
+            android:layout_height="400dip"
             android:contentDescription="@string/result_description" />
+        
+        <ImageView
+            android:id="@+id/banner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/pink_round" />
+        
+        </com.blahti.example.drag.DragLayer>
+        
     </RelativeLayout>
 
     <LinearLayout
