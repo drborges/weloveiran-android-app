@@ -11,20 +11,25 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int btn_custom=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int image=0x7f020002;
-        public static final int img_heart=0x7f020003;
-        public static final int img_menu=0x7f020004;
-        public static final int pink_round=0x7f020005;
+        public static final int blue_banner=0x7f020000;
+        public static final int btn_custom=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int image=0x7f020003;
+        public static final int img_heart=0x7f020004;
+        public static final int img_menu=0x7f020005;
+        public static final int orange_banner=0x7f020006;
+        public static final int pink_banner=0x7f020007;
+        public static final int pink_round=0x7f020008;
+        public static final int purple_banner=0x7f020009;
     }
     public static final class id {
+        public static final int banners_gallery=0x7f060003;
         public static final int btnAcceptPhoto=0x7f060004;
-        public static final int btnChoosePhoto=0x7f060006;
-        public static final int btnTakePhoto=0x7f060005;
+        public static final int btnChoosePhoto=0x7f060007;
+        public static final int btnTakePhoto=0x7f060006;
         public static final int header=0x7f060000;
-        public static final int menu=0x7f060002;
-        public static final int photo_banner=0x7f060003;
+        public static final int menu=0x7f060005;
+        public static final int photo_banner=0x7f060002;
         public static final int subtitle=0x7f060001;
     }
     public static final class layout {
@@ -45,4 +50,26 @@ public final class R {
         public static final int WindowTitleBackground=0x7f050001;
         public static final int customTheme=0x7f050000;
     }
+    public static final class styleable {
+        /**  These are the attributes that we want to retrieve from the theme
+         in view/Gallery1.java 
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #BannersGallery_android_galleryItemBackground org.weloveiran:android_galleryItemBackground}</code></td><td></td></tr>
+           </table>
+           @see #BannersGallery_android_galleryItemBackground
+         */
+        public static final int[] BannersGallery = {
+            0x0101004c
+        };
+        /**
+          <p>This symbol is the offset where the {@link org.weloveiran.R.attr#android_galleryItemBackground}
+          attribute's value can be found in the {@link #BannersGallery} array.
+          @attr name android:android_galleryItemBackground
+        */
+        public static final int BannersGallery_android_galleryItemBackground = 0;
+    };
 }

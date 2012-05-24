@@ -1,33 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#E5EDE4" >
+    android:background="#E5EDE4"
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dip"
+	    android:layout_weight="1"
         android:background="@drawable/img_menu" >
 
         <ImageView
             android:id="@+id/photo_banner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:contentDescription="@string/result_description" />
+    </RelativeLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <Gallery
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/banners_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dip"
+            android:height="50dip" />
 
         <Button
             android:id="@+id/btnAcceptPhoto"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@id/photo_banner"
             android:layout_margin="2dip"
             android:background="@drawable/btn_custom"
             android:height="50dip"
             android:text="@string/btnAcceptPhoto"
             android:textColor="@android:color/white" />
-    </RelativeLayout>
+    </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
