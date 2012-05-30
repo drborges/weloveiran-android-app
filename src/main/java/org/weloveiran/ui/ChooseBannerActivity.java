@@ -63,8 +63,8 @@ public class ChooseBannerActivity extends Activity implements View.OnTouchListen
 			public void onClick(View v) {
 				Uri photoUri = (Uri) getIntent().getExtras().get(
 						MediaStore.EXTRA_OUTPUT);
-				//uploadPicture(ploteBanner(photoUri));
-				showPicture(ploteBanner(photoUri));
+				uploadPicture(ploteBanner(photoUri));
+				//showPicture(ploteBanner(photoUri));
 			}
 		});
 
