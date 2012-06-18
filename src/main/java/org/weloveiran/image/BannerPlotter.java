@@ -4,10 +4,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-public class BannerPlotter implements Plotter, BannerSetter {
+public class BannerPlotter implements BannerSetter, Plotter {
 
+	private Bitmap photo;
 	private Bitmap banner;
-	private final Bitmap photo;
 	private final Canvas canvas;
 	
 	public BannerPlotter(Bitmap photo) {

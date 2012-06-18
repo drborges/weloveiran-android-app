@@ -1,54 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<org.weloveiran.ui.FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame2"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#E5EDE4"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-	    android:layout_width="fill_parent"
-	    android:layout_height="0dip"
-	    android:layout_weight="1"
-	    android:gravity="center"
-        android:background="@drawable/img_menu" >
-        
-        <com.blahti.example.drag.DragLayer
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/drag_layer"
-        android:layout_width="400dip"
-        android:layout_height="400dip" >
+        android:id="@+id/frame"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center" >
 
-        <ImageView
+        <com.blahti.example.drag.DragLayer
             android:id="@+id/photo_banner"
-            android:layout_width="400dip"
-            android:layout_height="400dip"
-            android:contentDescription="@string/result_description" />
-        
-        <ImageView
-            android:id="@+id/banner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/pink_round" />
-        
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/banner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </com.blahti.example.drag.DragLayer>
-        
     </RelativeLayout>
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <Gallery
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/banners_gallery"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dip"
-            android:height="50dip" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnAcceptPhoto"
@@ -61,4 +46,4 @@
             android:textColor="@android:color/white" />
     </LinearLayout>
 
-</LinearLayout>
+</org.weloveiran.ui.FrameLayout>

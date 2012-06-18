@@ -38,6 +38,11 @@ public class DragLayer extends MyAbsoluteLayout
     implements DragSource, DropTarget
 {
     DragController mDragController;
+    private OnMeasure onMeasure;
+    
+    public interface OnMeasure {
+		public void measure();
+	}
 
     /**
      * Used to create a new DragLayer from XML.
@@ -49,6 +54,24 @@ public class DragLayer extends MyAbsoluteLayout
         super(context, attrs);
     }
 
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+	}
+
+	@Override
+	protected void onSizeChanged(int xNew, int yNew, int xOld, int yOld) {
+		super.onSizeChanged(xNew, yNew, xOld, yOld);
+
+		if (onMeasure != null && getWidth() != 0 && getHeight() != 0) {
+			onMeasure.measure();
+		}
+	}
+
+	public void setOnMeasure(OnMeasure onMeasure) {
+		this.onMeasure = onMeasure;
+	}
+    
     public void setDragController(DragController controller) {
         mDragController = controller;
     }
@@ -72,7 +95,7 @@ public class DragLayer extends MyAbsoluteLayout
     public boolean dispatchUnhandledMove(View focused, int direction) {
         return mDragController.dispatchUnhandledMove(focused, direction);
     }
-
+    
 /**
  */
 // DragSource interface methods

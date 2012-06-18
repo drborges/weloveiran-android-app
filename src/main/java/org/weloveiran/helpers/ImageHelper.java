@@ -2,44 +2,44 @@ package org.weloveiran.helpers;
 
 import java.io.IOException;
 
+import org.weloveiran.image.Resizer;
+
 import android.app.Activity;
-import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.util.Log;
 
 public class ImageHelper {
 
-	private static final String TAG = "we-love-iran";
-	
-	private ImageHelper() {}
-	
-	public static Bitmap resolvePhotoOrientation(Activity activity, Uri uri, Bitmap photo)
-			throws IOException {
-		
+	private ImageHelper() {
+	}
+
+	public static Bitmap resolvePhotoOrientation(Activity activity, Uri uri, Bitmap photo) throws IOException {
+
 		Bitmap resolvedImage = photo;
 		String realPath = getRealPathFromURI(activity, uri);
-		Log.d(TAG, realPath);
 		ExifInterface exif = new ExifInterface(realPath);
-		
+
 		if (exif != null) {
 			int orientation = Integer.parseInt(exif.getAttribute(ExifInterface.TAG_ORIENTATION));
-			Log.d(TAG, Integer.toString(orientation));
-			
+
 			if (orientation == 3) {
 				resolvedImage = rotate(photo, 180);
-			} else {
-				// orientation == 6 || orientation == 8
+			} else if (orientation == 1) {
 				resolvedImage = rotate(photo, 90);
+			} else if (orientation == 6) {
+				resolvedImage = rotate(photo, 90);
+			} else if (orientation == 8) {
+				resolvedImage = rotate(photo, 270);
 			}
 		}
+
 		return resolvedImage;
 	}
-	
+
 	private static String getRealPathFromURI(Activity activity, Uri contentUri) {
 		String[] proj = { MediaStore.Images.Media.DATA };
 		Cursor cursor = activity.managedQuery(contentUri, proj, null, null, null);
@@ -47,17 +47,25 @@ public class ImageHelper {
 			return contentUri.getPath();
 		}
 
-		int column_index = cursor
-				.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+		int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 		cursor.moveToFirst();
 		return cursor.getString(column_index);
 	}
-	
-	private static Bitmap rotate(Bitmap photo, int amount) {
-		Matrix matrix = new Matrix();
-		matrix.postRotate(amount);
 
-		return Bitmap.createBitmap(photo, 0, 0, photo.getWidth(),
-				photo.getHeight(), matrix, true);
+	public static Bitmap rotate(Bitmap photo, int amount) {
+		try {
+			Matrix matrix = new Matrix();
+			matrix.postRotate(amount);
+			return Bitmap.createBitmap(photo, 0, 0, photo.getWidth(), photo.getHeight(), matrix, true);
+		} catch (Throwable e) {
+			e.printStackTrace();
+			return photo;
+		}
+	}
+
+	public static Bitmap fitInsideFrame(Bitmap bitmap, int vw, int vh) {
+		Resizer r = new Resizer(bitmap.getWidth(), bitmap.getHeight()).newRecipient(vw, vh);
+		Bitmap result = Bitmap.createScaledBitmap(bitmap, (int) r.getNewWidth(), (int) r.getNewHeight(), false);
+		return result;
 	}
 }

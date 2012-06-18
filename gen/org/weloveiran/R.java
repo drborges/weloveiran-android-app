@@ -39,33 +39,43 @@ public final class R {
         public static final int title_texture_width=0x7f040000;
     }
     public static final class drawable {
-        public static final int blue_banner=0x7f020000;
-        public static final int btn_custom=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int image=0x7f020003;
-        public static final int img_heart=0x7f020004;
-        public static final int img_menu=0x7f020005;
-        public static final int orange_banner=0x7f020006;
-        public static final int pink_banner=0x7f020007;
-        public static final int pink_round=0x7f020008;
-        public static final int purple_banner=0x7f020009;
+        public static final int app_background=0x7f020000;
+        public static final int background=0x7f020001;
+        public static final int blue_banner=0x7f020002;
+        public static final int btn_custom=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int image=0x7f020005;
+        public static final int img_heart=0x7f020006;
+        public static final int img_menu=0x7f020007;
+        public static final int orange_banner=0x7f020008;
+        public static final int pink_banner=0x7f020009;
+        public static final int pink_round=0x7f02000a;
+        public static final int purple_banner=0x7f02000b;
+        public static final int rotate_cw=0x7f02000c;
+        public static final int thumbs=0x7f02000d;
     }
     public static final class id {
-        public static final int banner=0x7f070004;
-        public static final int banners_gallery=0x7f070005;
-        public static final int btnAcceptPhoto=0x7f070006;
-        public static final int btnChoosePhoto=0x7f070009;
-        public static final int btnTakePhoto=0x7f070008;
-        public static final int drag_layer=0x7f070002;
+        public static final int banner=0x7f070007;
+        public static final int banners_gallery=0x7f070008;
+        public static final int btnAcceptPhoto=0x7f070009;
+        public static final int btnChoosePhoto=0x7f07000c;
+        public static final int btnTakePhoto=0x7f07000b;
+        public static final int frame=0x7f070005;
+        public static final int frame2=0x7f070004;
         public static final int header=0x7f070000;
-        public static final int menu=0x7f070007;
-        public static final int photo_banner=0x7f070003;
+        public static final int imageView1=0x7f07000e;
+        public static final int menu=0x7f07000a;
+        public static final int message=0x7f07000d;
+        public static final int photo_banner=0x7f070006;
+        public static final int rotate=0x7f070003;
         public static final int subtitle=0x7f070001;
+        public static final int title=0x7f070002;
     }
     public static final class layout {
-        public static final int title=0x7f030000;
-        public static final int ui_choose_banner=0x7f030001;
-        public static final int ui_main=0x7f030002;
+        public static final int big_title=0x7f030000;
+        public static final int small_title=0x7f030001;
+        public static final int ui_choose_banner=0x7f030002;
+        public static final int ui_main=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
@@ -74,11 +84,11 @@ public final class R {
         public static final int btnAcceptPhoto=0x7f050005;
         public static final int btnChoosePhoto=0x7f050004;
         public static final int btnTakePhoto=0x7f050003;
-        public static final int result_description=0x7f050006;
     }
     public static final class style {
-        public static final int WindowTitleBackground=0x7f060001;
-        public static final int customTheme=0x7f060000;
+        public static final int WindowTitleBackground=0x7f060002;
+        public static final int bigTitleTheme=0x7f060000;
+        public static final int smallTitleTheme=0x7f060001;
     }
     public static final class styleable {
         /**  These are the attributes that we want to retrieve from the theme

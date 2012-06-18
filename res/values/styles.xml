@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<style name="customTheme" parent="android:Theme.Light">
+    <style name="bigTitleTheme" parent="android:Theme.Light">
 		<item name="android:windowTitleSize">60dip</item>
 		<item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
+		<item name="android:windowBackground">@drawable/app_background</item>
+	</style>
+	<style name="smallTitleTheme" parent="android:Theme.Light">
+		<item name="android:windowTitleBackgroundStyle">@style/WindowTitleBackground</item>
+		<item name="android:windowBackground">@drawable/app_background</item>
 	</style>
     <style name="WindowTitleBackground">    
         <item name="android:background">@android:color/transparent</item>        

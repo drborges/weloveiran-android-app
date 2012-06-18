@@ -185,6 +185,10 @@ public class MyAbsoluteLayout extends ViewGroup {
             this.x = x;
             this.y = y;
         }
+        
+        public LayoutParams(int width, int height) {
+            super(width, height);
+        }
 
         /**
          * Creates a new set of layout parameters. The values are extracted from

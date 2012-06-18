@@ -21,7 +21,7 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		setContentView(R.layout.ui_main);
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.title);
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.big_title);
 
 		findViewById(R.id.btnTakePhoto).setOnClickListener(
 				new OnClickCapturePhotoButton(this, CAPTURE_IMAGE_REQUEST_CODE));

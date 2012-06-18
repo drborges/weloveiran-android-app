@@ -7,7 +7,6 @@ import android.content.res.TypedArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Gallery;
 import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
@@ -15,8 +14,6 @@ public class ImageAdapter extends BaseAdapter {
     
     public ImageAdapter(Context c) {
         mContext = c;
-        // See res/values/attrs.xml for the <declare-styleable> that defines
-        // Gallery1.
         TypedArray a = c.obtainStyledAttributes(R.styleable.BannersGallery);
         mGalleryItemBackground = a.getResourceId(R.styleable.BannersGallery_android_galleryItemBackground, 0);
         a.recycle();
@@ -38,13 +35,14 @@ public class ImageAdapter extends BaseAdapter {
         ImageView i = new ImageView(mContext);
 
         i.setImageResource(mImageIds[position]);
-        i.setScaleType(ImageView.ScaleType.FIT_XY);
-        i.setLayoutParams(new Gallery.LayoutParams(136, 88));
+        //i.setScaleType(ImageView.ScaleType.FIT_XY);
+        //i.setLayoutParams(new Gallery.LayoutParams(136, 88));
         i.setBackgroundResource(mGalleryItemBackground);
+        //i.setBackgroundColor(0xff00B062);
         
         return i;
     }
-
+    
     private Context mContext;
 
     private Integer[] mImageIds = {
@@ -52,6 +50,6 @@ public class ImageAdapter extends BaseAdapter {
 		R.drawable.orange_banner,
 		R.drawable.pink_banner,
 		R.drawable.purple_banner,
-        R.drawable.pink_round
+		R.drawable.pink_round
     };
 }
